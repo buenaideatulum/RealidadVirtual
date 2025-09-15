@@ -290,21 +290,22 @@
                     ios-src="https://modelviewer.dev/shared-assets/models/RobotExpressive.usdz"
                     alt="Gelato de Fresa en 3D"
                     ar 
-                    ar-modes="scene-viewer webxr quick-look"
+                    ar-modes="webxr scene-viewer quick-look"
                     camera-controls 
                     auto-rotate
-                    auto-rotate-delay="2000"
-                    rotation-per-second="40deg"
+                    auto-rotate-delay="3000"
+                    rotation-per-second="30deg"
                     environment-image="neutral"
                     poster="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                     shadow-intensity="1"
-                    camera-orbit="45deg 75deg 2m"
+                    camera-orbit="0deg 75deg 2m"
                     interaction-prompt="auto"
-                    ar-scale="fixed">
+                    ar-scale="fixed"
+                    loading="eager">
                     
-                    <div slot="ar-button" class="ar-button">
+                    <button slot="ar-button" class="ar-button">
                         🍨 Ver en Realidad Aumentada
-                    </div>
+                    </button>
                     
                     <div slot="progress-bar" style="display: none;"></div>
                 </model-viewer>
