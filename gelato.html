@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #ff9a8b 0%, #fecfef 50%, #fecfef 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -81,19 +81,19 @@
         .model-container {
             height: 500px;
             position: relative;
-            background: linear-gradient(45deg, #ffeef0, #fff5f7);
         }
 
         model-viewer {
             width: 100%;
             height: 100%;
+            background-color: #f5f5f5;
         }
 
         .ar-instructions {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: rgba(255,105,135,0.9);
+            background: rgba(0,0,0,0.8);
             color: white;
             padding: 10px 15px;
             border-radius: 10px;
@@ -122,7 +122,7 @@
         }
 
         .price-section {
-            background: linear-gradient(45deg, #ff9a8b, #fecfef);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             padding: 20px;
             border-radius: 15px;
@@ -152,13 +152,17 @@
         }
 
         .features li::before {
-            content: "🍓";
+            content: "✓";
+            background: #667eea;
+            color: white;
             width: 20px;
             height: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         .ar-tips {
@@ -190,10 +194,10 @@
         }
 
         .tip {
-            background: rgba(255, 154, 139, 0.1);
+            background: rgba(102, 126, 234, 0.1);
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #ff9a8b;
+            border-left: 4px solid #667eea;
         }
 
         .tip h4 {
@@ -205,26 +209,6 @@
             color: #666;
             font-size: 0.9rem;
             line-height: 1.5;
-        }
-
-        .temperature-info {
-            background: rgba(135, 206, 250, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            margin-top: 15px;
-            border: 2px solid rgba(135, 206, 250, 0.3);
-        }
-
-        .temperature-info h3 {
-            color: #333;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .temperature-info h3::before {
-            content: "❄️";
         }
 
         @media (max-width: 768px) {
@@ -257,13 +241,13 @@
 
         /* Estilos personalizados para model-viewer */
         model-viewer::part(default-ar-button) {
-            background: linear-gradient(45deg, #ff9a8b, #fecfef);
+            background: linear-gradient(45deg, #667eea, #764ba2);
             color: white;
             border-radius: 25px;
             padding: 12px 20px;
             font-weight: bold;
             border: none;
-            box-shadow: 0 5px 15px rgba(255, 154, 139, 0.3);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
     </style>
 </head>
@@ -275,7 +259,7 @@
             </a>
             <div class="title-section">
                 <h1>🍓 Gelato de Fresa</h1>
-                <p>Cremoso gelato artesanal en realidad aumentada</p>
+                <p>Experimenta este platillo en realidad aumentada</p>
             </div>
             <div></div>
         </div>
@@ -283,14 +267,14 @@
         <div class="main-content">
             <div class="model-container">
                 <div class="ar-instructions">
-                    🍨 Toca el botón AR para colocar este delicioso gelato en tu mesa
+                    📱 Toca el botón AR para colocar el gelato en tu mesa usando la cámara
                 </div>
                 <model-viewer 
-                    src="https://modelviewer.dev/shared-assets/models/RobotExpressive.glb"
-                    ios-src="https://modelviewer.dev/shared-assets/models/RobotExpressive.usdz"
+                    src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb"
+                    ios-src="https://modelviewer.dev/shared-assets/models/NeilArmstrong.usdz"
                     alt="Gelato de Fresa en 3D"
                     ar 
-                    ar-modes="webxr scene-viewer quick-look"
+                    ar-modes="scene-viewer webxr quick-look"
                     camera-controls 
                     auto-rotate
                     auto-rotate-delay="3000"
@@ -298,14 +282,13 @@
                     environment-image="neutral"
                     poster="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
                     shadow-intensity="1"
-                    camera-orbit="0deg 75deg 2m"
+                    camera-orbit="45deg 75deg 2.5m"
                     interaction-prompt="auto"
-                    ar-scale="fixed"
-                    loading="eager">
+                    ar-scale="fixed">
                     
-                    <button slot="ar-button" class="ar-button">
-                        🍨 Ver en Realidad Aumentada
-                    </button>
+                    <div slot="ar-button" class="ar-button">
+                        🚀 Ver en Realidad Aumentada
+                    </div>
                     
                     <div slot="progress-bar" style="display: none;"></div>
                 </model-viewer>
@@ -318,7 +301,7 @@
                         Nuestro Gelato de Fresa es una experiencia única que combina la tradición italiana con fresas mexicanas de temporada. Cada cucharada es una explosión de sabor natural y cremosidad incomparable.
                     </p>
                     
-                    <h2>Ingredientes Frescos</h2>
+                    <h2>Ingredientes Premium</h2>
                     <ul class="features">
                         <li>Fresas orgánicas de Irapuato</li>
                         <li>Leche entera de vacas libres</li>
@@ -327,27 +310,14 @@
                         <li>Yemas de huevo de rancho</li>
                         <li>Esencia natural de vainilla</li>
                     </ul>
-
-                    <div class="temperature-info">
-                        <h3>Información de Servido</h3>
-                        <p>Servido a -12°C para mantener la textura cremosa perfecta. Preparado diariamente en pequeños lotes para garantizar la máxima frescura.</p>
-                    </div>
                 </div>
 
                 <div class="price-section">
                     <h3>Precio</h3>
                     <div class="price">$120 MXN</div>
                     <p style="margin-top: 15px; opacity: 0.9;">
-                        Porción de 120ml servida en copa de cristal
+                        Incluye servicio de mesa y experiencia AR completa
                     </p>
-                    
-                    <div style="margin-top: 20px; padding: 15px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                        <h4 style="margin-bottom: 10px;">🏆 Premiado</h4>
-                        <p style="font-size: 0.9rem;">
-                            Mejor Gelato Artesanal<br>
-                            Festival Gastronómico 2024
-                        </p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -356,28 +326,20 @@
             <h3>Consejos para la mejor experiencia AR</h3>
             <div class="tips-grid">
                 <div class="tip">
-                    <h4>🔆 Iluminación adecuada</h4>
-                    <p>La realidad aumentada funciona mejor con buena iluminación natural o artificial.</p>
+                    <h4>🔆 Iluminación</h4>
+                    <p>Usa la realidad aumentada en un lugar bien iluminado para mejores resultados.</p>
                 </div>
                 <div class="tip">
-                    <h4>📐 Mesa o superficie</h4>
-                    <p>Coloca el gelato virtual en una mesa o superficie plana para mayor realismo.</p>
+                    <h4>📐 Superficie plana</h4>
+                    <p>Apunta la cámara hacia una superficie plana como una mesa para colocar el gelato.</p>
                 </div>
                 <div class="tip">
-                    <h4>📱 Mantén estable</h4>
-                    <p>Mueve el teléfono suavemente para que el sistema AR detecte mejor el entorno.</p>
+                    <h4>📱 Movimiento suave</h4>
+                    <p>Mueve el teléfono lentamente para que el sistema detecte mejor el entorno.</p>
                 </div>
                 <div class="tip">
-                    <h4>🎯 Interacción</h4>
-                    <p>Una vez colocado, puedes caminar alrededor del gelato virtual para verlo desde todos los ángulos.</p>
-                </div>
-                <div class="tip">
-                    <h4>📏 Tamaño real</h4>
-                    <p>El modelo está escalado al tamaño real de nuestras porciones para una experiencia auténtica.</p>
-                </div>
-                <div class="tip">
-                    <h4>📸 Comparte</h4>
-                    <p>Toma capturas de pantalla del gelato en AR y compártelas en redes sociales.</p>
+                    <h4>🎯 Toca para colocar</h4>
+                    <p>Una vez que aparezca el círculo, toca la pantalla para colocar el modelo 3D.</p>
                 </div>
             </div>
         </div>
@@ -388,48 +350,21 @@
         document.addEventListener('DOMContentLoaded', function() {
             const modelViewer = document.querySelector('model-viewer');
             
-            // Eventos del modelo 3D
             modelViewer.addEventListener('load', function() {
-                console.log('Modelo 3D del gelato cargado correctamente');
+                console.log('Modelo 3D cargado correctamente');
             });
 
             modelViewer.addEventListener('ar-status', function(event) {
-                switch(event.detail.status) {
-                    case 'session-started':
-                        console.log('Sesión AR del gelato iniciada');
-                        break;
-                    case 'object-placed':
-                        console.log('Gelato colocado en AR');
-                        break;
-                    case 'failed':
-                        console.log('Error en AR:', event.detail.message);
-                        break;
+                if (event.detail.status === 'session-started') {
+                    console.log('Sesión AR iniciada');
                 }
             });
 
             // Precargar el modelo para mejor rendimiento
             modelViewer.addEventListener('preload', function() {
-                console.log('Precargando modelo del gelato...');
-            });
-
-            // Animación de entrada suave
-            modelViewer.style.opacity = '0';
-            modelViewer.addEventListener('load', function() {
-                modelViewer.style.transition = 'opacity 0.5s ease';
-                modelViewer.style.opacity = '1';
+                console.log('Precargando modelo...');
             });
         });
-
-        // Detectar capacidades AR del dispositivo
-        if ('xr' in navigator) {
-            navigator.xr.isSessionSupported('immersive-ar').then((supported) => {
-                if (supported) {
-                    console.log('WebXR AR soportado');
-                } else {
-                    console.log('WebXR AR no soportado, usando Scene Viewer');
-                }
-            });
-        }
     </script>
 </body>
 </html>
