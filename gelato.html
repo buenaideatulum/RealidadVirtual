@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizza Margarita - AR</title>
+    <title>Bubble Waffle - AR</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         * {
@@ -258,7 +258,7 @@
                 ← Volver al menú
             </a>
             <div class="title-section">
-                <h1>🍕 Pizza Margarita</h1>
+                <h1>🧇 Bubble Waffle</h1>
                 <p>Experimenta este platillo en realidad aumentada</p>
             </div>
             <div></div>
@@ -267,12 +267,12 @@
         <div class="main-content">
             <div class="model-container">
                 <div class="ar-instructions">
-                    📱 Toca el botón AR para colocar la pizza en tu mesa usando la cámara
+                    📱 Toca el botón AR para colocar el Bubble Waffle en tu mesa usando la cámara
                 </div>
                 <model-viewer 
-                    src="https://cdn.glitch.me/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb?v=1569545377878"
-                    ios-src="https://cdn.glitch.me/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz?v=1569545377878"
-                    alt="Pizza Margarita en 3D"
+                    src="https://cdn.glitch.me/3aa48f8f-7c22-4013-ad5c-e9151826e3f9/BubbleWaffle.glb"
+                    ios-src="https://cdn.glitch.me/3aa48f8f-7c22-4013-ad5c-e9151826e3f9/BubbleWaffle.usdz"
+                    alt="Bubble Waffle en 3D"
                     ar 
                     ar-modes="scene-viewer webxr quick-look"
                     camera-controls 
@@ -280,14 +280,14 @@
                     auto-rotate-delay="3000"
                     rotation-per-second="30deg"
                     environment-image="neutral"
-                    poster="https://images.unsplash.com/photo-1574071318508-1cdbcd828d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    poster="https://images.unsplash.com/photo-1561948951-9b4e4d1b8b8f"
                     shadow-intensity="1"
                     camera-orbit="45deg 75deg 2.5m"
                     interaction-prompt="auto"
                     ar-scale="fixed">
                     
                     <div slot="ar-button" class="ar-button">
-                        🚀 Ver en Realidad Aumentada
+                        🍦 Ver en Realidad Aumentada
                     </div>
                     
                     <div slot="progress-bar" style="display: none;"></div>
@@ -298,25 +298,25 @@
                 <div class="info-section">
                     <h2>Descripción</h2>
                     <p>
-                        Nuestra Pizza Margarita es una obra maestra de la cocina italiana. Preparada con masa artesanal fermentada por 24 horas, salsa de tomate San Marzano, mozzarella di bufala fresca y albahaca cultivada en nuestro huerto.
+                        Nuestro Bubble Waffle es una experiencia dulce única, preparado con waffles suaves, bolitas crujientes y rellenos de helado de tu elección, acompañado de toppings frescos y chocolate artesanal.
                     </p>
                     
                     <h2>Ingredientes Premium</h2>
                     <ul class="features">
-                        <li>Masa artesanal fermentada 24h</li>
-                        <li>Tomates San Marzano DOP</li>
-                        <li>Mozzarella di Bufala Campana</li>
-                        <li>Albahaca fresca orgánica</li>
-                        <li>Aceite de oliva extra virgen</li>
-                        <li>Sal marina del Mediterráneo</li>
+                        <li>Waffle recién horneado</li>
+                        <li>Helado cremoso de temporada</li>
+                        <li>Toppings frescos y frutas</li>
+                        <li>Chocolate artesanal</li>
+                        <li>Sirope de sabores naturales</li>
+                        <li>Galleta crujiente adicional</li>
                     </ul>
                 </div>
 
                 <div class="price-section">
                     <h3>Precio</h3>
-                    <div class="price">$280 MXN</div>
+                    <div class="price">$150 MXN</div>
                     <p style="margin-top: 15px; opacity: 0.9;">
-                        Incluye servicio de mesa y experiencia AR completa
+                        Incluye experiencia AR completa
                     </p>
                 </div>
             </div>
@@ -331,7 +331,7 @@
                 </div>
                 <div class="tip">
                     <h4>📐 Superficie plana</h4>
-                    <p>Apunta la cámara hacia una superficie plana como una mesa para colocar la pizza.</p>
+                    <p>Apunta la cámara hacia una superficie plana como una mesa para colocar el modelo.</p>
                 </div>
                 <div class="tip">
                     <h4>📱 Movimiento suave</h4>
@@ -346,7 +346,6 @@
     </div>
 
     <script>
-        // Mejoras para la experiencia del usuario
         document.addEventListener('DOMContentLoaded', function() {
             const modelViewer = document.querySelector('model-viewer');
             
@@ -360,7 +359,6 @@
                 }
             });
 
-            // Precargar el modelo para mejor rendimiento
             modelViewer.addEventListener('preload', function() {
                 console.log('Precargando modelo...');
             });
