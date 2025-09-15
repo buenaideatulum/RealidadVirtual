@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Margarita - AR</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .back-btn {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateX(-5px);
+        }
+
+        .title-section {
+            color: white;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .title-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-section p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .model-container {
+            height: 500px;
+            position: relative;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5f5;
+        }
+
+        .ar-instructions {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            max-width: 250px;
+            line-height: 1.4;
+        }
+
+        .product-info {
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .info-section h2 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .info-section p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .price-section {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .price-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features li::before {
+            content: "✓";
+            background: #667eea;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .ar-tips {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .ar-tips h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ar-tips h3::before {
+            content: "📱";
+            font-size: 1.5rem;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .tip {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .tip h4 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .tip p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .header {
+                text-align: center;
+            }
+
+            .title-section h1 {
+                font-size: 2rem;
+            }
+
+            .product-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .model-container {
+                height: 400px;
+            }
+        }
+
+        /* Estilos personalizados para model-viewer */
+        model-viewer::part(default-ar-button) {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 25px;
+            padding: 12px 20px;
+            font-weight: bold;
+            border: none;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">
+                ← Volver al menú
+            </a>
+            <div class="title-section">
+                <h1>🍕 Pizza Margarita</h1>
+                <p>Experimenta este platillo en realidad aumentada</p>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="main-content">
+            <div class="model-container">
+                <div class="ar-instructions">
+                    📱 Toca el botón AR para colocar la pizza en tu mesa usando la cámara
+                </div>
+                <model-viewer 
+                    src="https://cdn.glitch.me/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.glb?v=1569545377878"
+                    ios-src="https://cdn.glitch.me/36cb8393-65c6-408d-a538-055ada20431b/Astronaut.usdz?v=1569545377878"
+                    alt="Pizza Margarita en 3D"
+                    ar 
+                    ar-modes="scene-viewer webxr quick-look"
+                    camera-controls 
+                    auto-rotate
+                    auto-rotate-delay="3000"
+                    rotation-per-second="30deg"
+                    environment-image="neutral"
+                    poster="https://images.unsplash.com/photo-1574071318508-1cdbcd828d002?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+                    shadow-intensity="1"
+                    camera-orbit="45deg 75deg 2.5m"
+                    interaction-prompt="auto"
+                    ar-scale="fixed">
+                    
+                    <div slot="ar-button" class="ar-button">
+                        🚀 Ver en Realidad Aumentada
+                    </div>
+                    
+                    <div slot="progress-bar" style="display: none;"></div>
+                </model-viewer>
+            </div>
+
+            <div class="product-info">
+                <div class="info-section">
+                    <h2>Descripción</h2>
+                    <p>
+                        Nuestra Pizza Margarita es una obra maestra de la cocina italiana. Preparada con masa artesanal fermentada por 24 horas, salsa de tomate San Marzano, mozzarella di bufala fresca y albahaca cultivada en nuestro huerto.
+                    </p>
+                    
+                    <h2>Ingredientes Premium</h2>
+                    <ul class="features">
+                        <li>Masa artesanal fermentada 24h</li>
+                        <li>Tomates San Marzano DOP</li>
+                        <li>Mozzarella di Bufala Campana</li>
+                        <li>Albahaca fresca orgánica</li>
+                        <li>Aceite de oliva extra virgen</li>
+                        <li>Sal marina del Mediterráneo</li>
+                    </ul>
+                </div>
+
+                <div class="price-section">
+                    <h3>Precio</h3>
+                    <div class="price">$280 MXN</div>
+                    <p style="margin-top: 15px; opacity: 0.9;">
+                        Incluye servicio de mesa y experiencia AR completa
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ar-tips">
+            <h3>Consejos para la mejor experiencia AR</h3>
+            <div class="tips-grid">
+                <div class="tip">
+                    <h4>🔆 Iluminación</h4>
+                    <p>Usa la realidad aumentada en un lugar bien iluminado para mejores resultados.</p>
+                </div>
+                <div class="tip">
+                    <h4>📐 Superficie plana</h4>
+                    <p>Apunta la cámara hacia una superficie plana como una mesa para colocar la pizza.</p>
+                </div>
+                <div class="tip">
+                    <h4>📱 Movimiento suave</h4>
+                    <p>Mueve el teléfono lentamente para que el sistema detecte mejor el entorno.</p>
+                </div>
+                <div class="tip">
+                    <h4>🎯 Toca para colocar</h4>
+                    <p>Una vez que aparezca el círculo, toca la pantalla para colocar el modelo 3D.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mejoras para la experiencia del usuario
+        document.addEventListener('DOMContentLoaded', function() {
+            const modelViewer = document.querySelector('model-viewer');
+            
+            modelViewer.addEventListener('load', function() {
+                console.log('Modelo 3D cargado correctamente');
+            });
+
+            modelViewer.addEventListener('ar-status', function(event) {
+                if (event.detail.status === 'session-started') {
+                    console.log('Sesión AR iniciada');
+                }
+            });
+
+            // Precargar el modelo para mejor rendimiento
+            modelViewer.addEventListener('preload', function() {
+                console.log('Precargando modelo...');
+            });
+        });
+    </script>
+</body>
+</html>
